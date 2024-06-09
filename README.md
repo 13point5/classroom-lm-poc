@@ -9,6 +9,8 @@ For the first experiment we will focus on a tool that gives feedback on essays.
 
 This aggregated feedback is then used to demonstrate the personalisation for a **Lesson Plan Generator Tool** that will be used by a Teacher.
 
+[ClassroomLM](https://classroom-lm.vercel.app/) is a WIP and here is the [frontend](https://github.com/13point5/classroom-lm) repo.
+
 ## Data
 
 I used ChatGPT to generate the student essays and follow-up chat data. I used MagicSchool.ai's tool for providing feedback on essays for the AI messages.
