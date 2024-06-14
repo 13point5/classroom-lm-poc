@@ -1,7 +1,16 @@
 from pydantic import BaseModel, Field
 from typing import List
 import numpy as np
-import math
+
+
+class TopicKnowledge(BaseModel):
+    topic: str
+    strengths: List[str]
+    misconceptions: List[str]
+
+
+class MathAgentKnowledge(BaseModel):
+    knowledge: List[TopicKnowledge]
 
 
 class CriteraFeedback(BaseModel):
@@ -87,7 +96,7 @@ def aggregate_feedback(feedbacks: List[Evaluation], openai_client):
     # Deduplicate lists
     for key in aggregated:
         for subkey in aggregated[key]:
-            aggregated[key][subkey] = remove_duplicates(
+            aggregated[key][subkey] = remove_semantic_duplicates(
                 openai_client, aggregated[key][subkey]
             )
 
@@ -160,7 +169,7 @@ def dynamic_threshold(similarity_matrix):
     return threshold
 
 
-def remove_duplicates(openai_client, strings: List[str]) -> List[str]:
+def remove_semantic_duplicates(openai_client, strings: List[str]) -> List[str]:
     strings = [s.strip() for s in strings if s.strip() != "None"]
 
     n = len(strings)
