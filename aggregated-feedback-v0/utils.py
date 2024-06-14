@@ -33,7 +33,7 @@ class Evaluation(BaseModel):
     )
     structure: CriteraFeedback = Field(
         ...,
-        description="Analasis of the structure of the essay's body with these criteria: 1. Organization and clarity of paragraphs, 2. Logical flow of ideas",
+        description="Analysis of the structure of the essay's body with these criteria: 1. Organization and clarity of paragraphs, 2. Logical flow of ideas",
     )
     argumentation: CriteraFeedback = Field(
         ...,
